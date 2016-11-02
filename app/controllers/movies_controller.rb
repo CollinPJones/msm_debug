@@ -4,23 +4,25 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[id])
+    @movie = Movie.find(params[:id])
   end
 
   def new_form
+    #  Parameters: {"title"=>"Finding Nemo", "year"=>"2003", "duration"=>"100", "desription"=>"After his son is captured in the Great Barrier Reef and taken to Sydey, a timid clownfish sets out on a journey to bring him home.", "image_url"=>"ttps://images-na.ssl-images-amazon.com/images/M/MV5BZTAzNWZlNmUtZDEzYi00ZjA5LWIYjEtZGM1NWE1MjE4YWRhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jp", "director_id"=>"475"}
   end
 
   def create_row
-    @movie.title = params[:the_title]
-    @movie.year = params[:the_year]
-    @movie.duration = params[:the_duration]
-    @movie.description = params[:the_description]
-    @movie.image_url = params[:the_image_url]
-    @movie.director_id = params[:the_director_id]
+    @movie = Movie.new
 
+    @movie.title = params[:title]
+    @movie.year = params[:year]
+    @movie.duration = params[:duration]
+    @movie.description = params[:description]
+    @movie.image_url = params[:image_url]
+    @movie.director_id = params[:director_id]
     @movie.save
 
-    render("show")
+    redirect_to("/movies/#{@movie.id.to_s}")
   end
 
   def edit_form

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   # Routes for the Movie resource:
   # CREATE
+  get('/movies/create_row', { :controller => 'movies', :action => 'create_row' })
   get('/movies/new_form', { :controller => 'movies', :action => 'new_form' })
   get('/create_movie', { :controller => 'movies', :action => 'create_row' })
 
